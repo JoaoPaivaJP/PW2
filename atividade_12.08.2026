@@ -1,0 +1,105 @@
+// app.js
+// Front-end
+
+function entrar() {
+    // Captura de dados
+
+    let login =
+        document.getElementById("usuario").value;
+    let senha =
+        document.getElementById("senha").value;
+    let resposta =
+        autenticar(login, senha);
+
+    // Analisa a resposta
+
+    if (resposta.sucesso) {
+        carregarPagina(
+            resposta.usuario
+        );
+        document.getElementById(
+            "mensagem"
+        ).innerHTML = "";
+    } else {
+        mostrarErro(
+            resposta.mensagem
+        );
+    }
+}
+function carregarPagina(usuario) {
+    let conteudo =
+        document.getElementById("conteudo");
+
+    conteudo.innerHTML = `
+    
+    <div class="pagina">
+
+    <h2>
+    Bem-Vindo, ${usuario.nome}!
+    </h2>
+
+    <p>
+    Login realizado com sucesso.
+    </p>
+    
+    </div>
+
+    <hr>
+
+    <h3>Dados do usuário</h3>
+
+    <p>
+     <strong>Nome:</strong>
+     ${usuario.nome}
+    </p>
+
+    <p>
+    <strong>Curso:</strong>
+    ${usuario.curso}
+    </p>
+
+    <p>
+    <strong>Usuário:</strong>
+    ${usuario.login}
+    </p>
+
+    <button onclicl="sair()">
+    sair
+    </button>
+
+    </div>
+  `;
+
+    document.getElementById(
+        "mensagem"
+    ).innerHTML = "";
+
+}
+
+function mostrarErro(mensagem) {
+    document.getElementById(
+        "mensagem"
+    ).innerHTML = mensagem;
+
+    document.getElementById(
+        "conteudo"
+    ).innerHTML = "";
+}
+
+function sair() {
+    document.getElementById(
+        "conteudo"
+    ).innerHTML = "";
+
+    document.getElementById(
+        "usuario"
+    ).value = "";
+
+    document.getElementById(
+        "senha"
+    ).value = "";
+
+    document.getElementById(
+        "mensagem"
+    ).innerHTML = "";
+}
