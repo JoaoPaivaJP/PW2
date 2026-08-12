@@ -14,7 +14,7 @@ Index.html:
         <h2>Login</h2>
         <div class="campo">
             <label>Username:</label>
-            <input type="text" type="Username" id="senha" placeholder="Entre com seu usuário">
+            <input type="text" type="Username" id="usuario" placeholder="Entre com seu usuário">
         </div>
         <div class="campo">
             <label>Password:</label>
