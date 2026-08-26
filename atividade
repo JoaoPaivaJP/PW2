@@ -34,6 +34,10 @@ Index.html:
 </html>
 
 style.css:
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #eee;
@@ -49,9 +53,12 @@ body {
 
 .login h1 {
     color: darkblue;
+    text-align: center;
 }
 
 .campo {
+    display: flex;
+    aling-items: center;
     margin-bottom: 15px;
 }
 
@@ -70,6 +77,18 @@ button {
     padding: 10px;
 }
 
+.login button {
+    width: 100%;
+    padding: 10px;
+    cursos: pointer;
+}
+
+#mensagem {
+    widht: 80%;
+    max-width: 900px;
+    margin: 30px auto;
+}
+
 #conteudo {
     width: 80%;
     max-width: 900px;
@@ -83,6 +102,11 @@ button {
 
 .pagina h2 {
     color: darkblue;
+}
+
+.sucesso {
+    color: #1b5e20
+    font-weight: bold;
 }
 
 server.js:
@@ -133,3 +157,4 @@ function autenticar(login, senha) {
         mensagem: "Usuário ou senha inválidos"
     }
 }
+iniciarBanco();
