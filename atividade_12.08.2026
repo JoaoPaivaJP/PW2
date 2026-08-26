@@ -2,104 +2,67 @@
 // Front-end
 
 function entrar() {
+
     // Captura de dados
+    let login = document.getElementById("usuario").value;
+    let senha = document.getElementById("senha").value;
 
-    let login =
-        document.getElementById("usuario").value;
-    let senha =
-        document.getElementById("senha").value;
-    let resposta =
-        autenticar(login, senha);
+    if (login.trim() === "" || senha.trim() === "") {
+        mostrarErro("Informe o usuário e a senha.");
+        return;
+    }
+    // Solicita autentificação ao servidor simulado
+    let resposta = autenticar(login, senha);
 
-    // Analisa a resposta
-
+    // Trata a resposta
     if (resposta.sucesso) {
-        carregarPagina(
-            resposta.usuario
-        );
+        carregarPagina(resposta.usuario);
         document.getElementById(
             "mensagem"
         ).innerHTML = "";
     } else {
-        mostrarErro(
-            resposta.mensagem
-        );
+        mostrarErro(resposta.mensagem);
     }
 }
+
+// Cria uma parte da pagina dinamiamente
 function carregarPagina(usuario) {
-    let conteudo =
-        document.getElementById("conteudo");
 
-    conteudo.innerHTML = `
-    
-    <div class="pagina">
+    let conteudo = document.getElementById("conteudo");
 
-    <h2>
-    Bem-Vindo, ${usuario.nome}!
-    </h2>
+    conteudo.innerHTML = ` 
+        <div class="pagina">
+            <h2> Bem-Vindo, ${usuario.nome}!</h2>
 
-    <p>
-    Login realizado com sucesso.
-    </p>
-    
-    </div>
+            <p class="sucesso">
+                Login realizado com sucesso.
+            </p>
 
-    <hr>
+            <hr>
 
-    <h3>Dados do usuário</h3>
+            <h3>Dados do usuário</h3>
 
-    <p>
-     <strong>Nome:</strong>
-     ${usuario.nome}
-    </p>
+            <p><strong>Nome:</strong> ${usuario.nome}</p>
+            <p><strong>Curso:</strong> ${usuario.curso}</p>
+            <p><strong>Turma:</strong> ${usuario.turma}</p>
+            <p><strong>Usuário:</strong> ${usuario.login}</p>
 
-    <p>
-    <strong>Curso:</strong>
-    ${usuario.curso}
-    </p>
-
-    <p>
-    <strong>Usuário:</strong>
-    ${usuario.login}
-    </p>
-
-    <button onclicl="sair()">
-    sair
-    </button>
-
-    </div>
+            <button type="button" onclicl="sair()">sair</button>
+        </div>
   `;
 
-    document.getElementById(
-        "mensagem"
-    ).innerHTML = "";
-
+  document.getElementById("mensagem").innerHTML = "";
 }
 
 function mostrarErro(mensagem) {
-    document.getElementById(
-        "mensagem"
-    ).innerHTML = mensagem;
-
-    document.getElementById(
-        "conteudo"
-    ).innerHTML = "";
+    document.getElementById("mensagem").innerHTML = mensagem;
+    document.getElementById("conteudo").innerHTML = "";
 }
 
 function sair() {
-    document.getElementById(
-        "conteudo"
-    ).innerHTML = "";
-
-    document.getElementById(
-        "usuario"
-    ).value = "";
-
-    document.getElementById(
-        "senha"
-    ).value = "";
-
-    document.getElementById(
-        "mensagem"
-    ).innerHTML = "";
+    document.getElementById("conteudo").innerHTML = "";
+    document.getElementById("usuario").value = "";
+    document.getElementById("senha").value = "";
+    document.getElementById("mensagem").innerHTML = "";
+    document.getElementById("usuario").focus();
 }
