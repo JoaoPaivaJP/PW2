@@ -72,11 +72,6 @@ body {
     padding: 10px;
 }
 
-button {
-    width: 100%;
-    padding: 10px;
-}
-
 .login button {
     width: 100%;
     padding: 10px;
@@ -84,7 +79,7 @@ button {
 }
 
 #mensagem {
-    widht: 80%;
+    width: 80%;
     max-width: 900px;
     margin: 30px auto;
 }
@@ -105,7 +100,7 @@ button {
 }
 
 .sucesso {
-    color: #1b5e20
+    color: #1b5e20;
     font-weight: bold;
 }
 
