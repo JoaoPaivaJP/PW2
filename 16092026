@@ -1,0 +1,34 @@
+const nome = "Joedshon";
+const idade = 24;
+const curso = "PW-II";
+const escola = "ETEC Abdias do Nascimento";
+const nota1 = 4
+const nota2 = 10
+
+console.log(
+    `Meu nome ${nome}`, `Tenho ${idade}`, `estudo ${curso}`, `na escola ${escola}.`
+);
+
+function calcularMedia(nota1, nota2) {
+    const media = (nota1 + nota2) / 2;
+    return media;
+}
+
+const mediaFinal = calcularMedia(nota1, nota2);
+console.log(
+    `Aluno: ${nome}`
+);
+console.log(
+    `Nota 1: ${nota1}`
+);
+console.log(
+    `Nota 2: ${nota2}`
+);
+console.log(
+    `Média: ${mediaFinal}`
+);
+if (mediaFinal >= 6){
+    console.log("Situaçao: aprovado")
+} else {
+    console.log("Situação: reprovado")
+}
