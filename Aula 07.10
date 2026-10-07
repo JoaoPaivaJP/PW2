@@ -1,0 +1,96 @@
+Index.js:
+
+console.log("Meu primeiro programa em Node.js")
+
+const nome = "Carlos";
+const idade = 16;
+
+console.log ("Nome", nome)
+console.log ("Idade", idade)
+
+function somar(numero1, numero2) {
+    return numero1 + numero2;
+}
+
+const resultado = somar(10, 5)
+
+console.log("O resultado da soma é: ", resultado);
+
+
+function calcularmedia(n1,n2,n3,n4){
+     const media = (n1+n2+n3+n4) / 4; 
+    return media;
+} 
+
+const n1 = 67;
+const n2 = 67;
+const n3 = 67;
+const n4 = 67;
+
+const mediaFinal = calcularmedia(n1, n2, n3, n4);
+
+console.log(`A média final é: ${mediaFinal}`);
+
+package.json:
+
+{
+  "name": "primeiro_programa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+
+
+mediaFinal.js:
+
+/* App para calcular a média do aluno, iformando sse foi aprovato ou reprovado */
+
+const nome = "Ana Heloisa";
+const curso = "DS";
+
+function calcularmedia (n1, n2, n3, n4){
+    const media = (n1+n2+n3+n4) / 4
+    return media;
+}
+
+const n1 = 5;
+const n2 = 2;
+const n3 = 7;
+const n4 = 10;
+
+const mediaFinal = calcularmedia(n1,n2,n3,n4);
+
+let situacao;
+
+if(mediaFinal >= 6) {
+   situacao = "Aprovado!";
+}else{
+ situacao = "Reprovado.";
+}
+
+console.log(`Aluno: ${nome}`);
+console.log(`Curso: ${curso}`);
+console.log(`Situação: ${situacao}`);
+console.log(`Média final: ${mediaFinal}`);
+
+receberDados.js
+
+import readline from "node:readline";
+const entrada = readline.createinterface({
+    input: ProcessingInstruction.stdin,
+    output:ProcessingInstruction.stdout
+});
+
+entrada.question("Digite um número: ", function(valorDigitado) {
+    const numero = Number(valorDigitado);
+    const dobro = numero * 2;
+
+    console.log(`Dobro de ${numero} é ${dobro}.`);
+
+});
