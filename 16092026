@@ -1,4 +1,4 @@
-const nome = "Joedshon";
+const nome = "João Pedro";
 const idade = 24;
 const curso = "PW-II";
 const escola = "ETEC Abdias do Nascimento";
