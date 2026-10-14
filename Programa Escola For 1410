@@ -1,0 +1,99 @@
+Antes do For:
+
+const readline = require("readline");
+
+const entrada = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+entrada.question("Digite o nome do aluno: ", (nome) => {
+  entrada.question("Digite o seu curso: ", (curso) => {
+    entrada.question("Digite a primeira nota: ", (nota1) => {
+      entrada.question("Digite a segunda nota: ", (nota2) => {
+        nota1 = Number(nota1);
+        nota2 = Number(nota2);
+
+        function calcularMedia(nota1, nota2) {
+          return (nota1 + nota2) / 2;
+        }
+
+        const media = calcularMedia(nota1, nota2);
+
+        let situacao;
+
+        if (media >= 5) {
+          situacao = "Aprovado";
+        } else {
+          situacao = "Reprovado";
+        }
+
+        console.log("\n--- Resultado do Aluno ---");
+        console.log("Nome:", nome);
+        console.log("Curso:", curso);
+        console.log("Primeira nota:", nota1);
+        console.log("Segunda nota:", nota2);
+        console.log("Média:", media);
+        console.log("Situação:", situacao);
+
+        entrada.close();
+      });
+    });
+  });
+});
+
+Depois dp For:
+
+const readline = require("node:readline/promises");
+const { stdin, stdout } = require("node:process");
+
+const entrada = readline.createInterface({
+  input: stdin,
+  output: stdout
+});
+
+function calcularMedia(notas) {
+    let soma = 0;
+
+    for (let i = 0; i < notas.length; i++) {
+        soma = soma + notas[i];
+    }
+
+    return soma / notas.length;
+}
+
+async function iniciarPrograma() {
+    const nome = await entrada.question("Digite o nome do aluno: ");
+    const curso = await entrada.question("Digite o curso: ");
+
+    const notas = [];
+
+    for (let i = 1; i <= 4; i++) {
+        const notaDigitada = await entrada.question (`Digite a ${i}ª nota: `
+        );
+
+        const nota = Number(notaDigitada);
+        notas.push(nota);
+    }
+
+    const mediaFinal = calcularMedia(notas);
+
+    let situacao;
+
+    if (mediaFinal >= 0) {
+        situacao = "Aprovado"
+    } else {
+        situacao = "Reprovado"
+    }
+
+    console.log("\n--- Resultado do aluno ---");
+    console.log(`Aluno: ${nome}`);
+    console.log(`Curso: ${curso}`);
+    console.log(`Notas: ${notas.join(", ")}`);
+    console.log(`Média final: ${mediaFinal.toFixed(2)}`);
+    console.log(`Situição: ${situacao}`);
+
+    entrada.close();
+}
+
+iniciarPrograma();
