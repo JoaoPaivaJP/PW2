@@ -1,1 +1,48 @@
+//Importando as bibliotecas
+const express = require("express"); //Faz o tratamento de nossas APIs
+const mysql = require("mysql2/promise"); //Cria a comunicação do Node.js com o MySql. Promise guarda a resposta
 
+//Criando aplicação
+const app = express();
+
+//Criar a comunicação com nosso Banco de Dados
+let conexao;
+
+//Disponibilizar os arquivos da pasta public.
+app.use(express.static("public"));
+
+//Definir a rota de consulta.
+app.get("/api/Cursos", async (req, res) => {
+    try {
+        const sql = "SELECT id, nome FROM Cursos";
+
+        const [resultados] = await conexao.query(sql);
+    } catch (erro) {
+        console.error("Erro na consulta: ", erro.message);
+        res.status(500).json({
+            mensagem: "Erro ao consultar os cursos."
+        });
+    }
+});
+
+//Conecta ao Banco e inicia o servidor
+async function iniciarServidor() {
+    try {
+        conexao = await mysql.createConnection({
+            host: "local",
+            user: "root",
+            password: "root",
+            database: "escola"
+        });
+
+console.log("Banco conectado.");
+
+app.listen(3000, () => {
+    console.log("Servidor rodando em http://localhost:3000");
+})
+    } catch (erro) {
+        console.error("Falha na conexão: ", erro.message);
+    }
+}
+
+iniciarServidor();
